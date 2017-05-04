@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <meta name="description" content="" />
         <meta name="author" content="" /><title></title>
+        <link rel="stylesheet" href="../Stylesheets/prism.css"/>
     </head>
     <body>
         <div class="content">
@@ -20,5 +21,6 @@
                 </div>
             </div>
         </div>
+        <script src="../../../Scripts/prism.js"></script>
     </body>
 </html>
