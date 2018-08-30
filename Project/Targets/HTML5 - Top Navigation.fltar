@@ -12,7 +12,9 @@
   ResultsPerPage="10"
   Skin="/Project/Skins/HTML5 - Top Navigation.flskn"
   ConditionTagExpression="include[&quot;General.Audience A&quot;] exclude[&quot;General.Audience B&quot;] "
-  DefaultUrl="/Content/Home.htm">
+  DefaultUrl="/Content/Home.htm"
+  OutputFile="index.html"
+  UseCustomTopicFileExtension="true">
   <PrintedOutput
     CollapseMargins="true"
     GenerateTOCProxy="true"
@@ -22,4 +24,7 @@
     <Destination
       Link="/Project/Destinations/github-docs.fldes" />
   </Destinations>
+  <PreBuild>cd $(OutputDirectory)
+copy Default.html index.html
+delete Default.html</PreBuild>
 </CatapultTarget>
