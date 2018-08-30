@@ -24,7 +24,8 @@
     <Destination
       Link="/Project/Destinations/github-docs.fldes" />
   </Destinations>
-  <PreBuild>cd $(OutputDirectory)
+  <PreBuild></PreBuild>
+  <PostBuild>cd $(OutputDirectory)
 copy Default.html index.html
-del Default.html</PreBuild>
+del Default.html</PostBuild>
 </CatapultTarget>

@@ -164,75 +164,28 @@
                                             </div>
                                         </div>
                                         <h1>Basic Steps</h1>
-                                        <p>Here is some css</p><pre><code class="language-css">p { color: red }</code></pre>
-                                        <p>Here is some Python. This script can be used as a post-checkout git-hook to change your default Flare Target to a Target that is more appropriate for the new branch, if it finds a fuzzy match between the target name and the branch name.</p><pre><code class="language-python">
-        	#!/usr/bin/python
-        	from lxml import etree
-        	import os
-        	from fuzzywuzzy import fuzz
-        	from fuzzywuzzy import process
-        	import sys
+                                        <p>Here is some css</p><pre><code class="language-css">code[class*="language-"],
+pre[class*="language-"] {
+	color: white;
+	background: none;
+	text-shadow: 0 -.1em .2em black;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
 
-        	TARGET_LIST = "target-list.txt"
-        	# Set path to UserData.fluser in an environment variable
-        	# In Git bash, path should be like this, for example:
-        	# /c/Users/username/flare/project/Project/Users/username/UserData.fluser
-        	USER_SETTINGS_FILE = os.environ['FLARE_USER_SETTINGS']
-        	TARGET_PATH = "Project/Targets/"
-        	TARGET_FILE_EXTENSION = ".fltar"
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
 
-        	# Hopefully find/return primary target by searching branch name in target list
-        	def find_primary_target(branch):
-
-        		primary_target = ""
-        		
-        		with open(TARGET_LIST) as tl:
-        			targets = [target.rstrip('\n') for target in tl.readlines()]
-        		
-        		candidate = process.extractOne(branch, targets, scorer=fuzz.token_sort_ratio)
-        		candidate_target = candidate[0]
-        		candidate_score = candidate[1]
-        		
-        		if candidate_score &lt; 30:
-        			return primary_target
-        		else:
-        			primary_target = TARGET_PATH + candidate_target + TARGET_FILE_EXTENSION
-        			return primary_target
-
-        	# Set primary target by writing primary target path to User file
-        	def set_primary_target(primary_target):
-
-        		with open(USER_SETTINGS_FILE, "rb") as uf:
-        			user_settings = etree.parse(uf)
-
-        		root = user_settings.getroot()
-        		root.set("PrimaryTarget", primary_target)
-
-        		with open(USER_SETTINGS_FILE, "wb") as uf:
-        			uf.write(etree.tostring(user_settings, xml_declaration=True, encoding="utf-8", pretty_print=True))
-
-        		return
-
-
-        	def main():
-
-        		# 3rd post-checkout parameter is "1" for branch checkout
-        		# OR "0" for file checkout
-        		is_branch_checkout = sys.argv[3]
-        		
-        		if is_branch_checkout == "1":
-        			branch = os.popen('git rev-parse --abbrev-ref HEAD').read().rstrip('\n')
-        			primary_target = find_primary_target(branch)
-        			if primary_target != "":
-        				set_primary_target(primary_target)
-        			else:
-        				pass
-        		else:
-        			pass
-
-        	if __name__ == "__main__":
-        		main()
-        </code></pre>
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}</code></pre>
                                     </div>
                                 </div>
                             </div>
